@@ -1,0 +1,186 @@
+@import '../../styles.scss';
+
+.badValueContainer {
+  padding: 45px 10px 10px 10px;
+  width: 100%;
+  margin-top: 50px;
+  font-family: 'Lato' !important;
+}
+.disabled{
+  cursor: not-allowed;
+}
+
+.table {
+  width: 100%;
+  tr{
+    th{
+      font-weight: 600;
+    }
+    th,td{
+      border: 1px solid #e0e0e0;
+    }
+  }
+}
+
+.card {
+  box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
+
+  .card-header {
+    background-color: white;
+
+    h6 {
+      padding: 3px 0px;
+      font-size: 18px;
+      margin-bottom: 0rem;
+    }
+  }
+
+  // .form {
+  //   .col {
+  //     width: 20%;
+  //     @media screen and (max-width: 992px) {
+  //       width: 50% !important;
+  //     }
+  //   }
+  // }
+
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-control {
+    border: 1px solid #00000024;
+    color: rgba(0, 0, 0, 0.653);
+  }
+
+  .band-value {
+    width: 75%;
+  }
+
+  .form-control::placeholder {
+    color: rgba(0, 0, 0, 0.653);
+  }
+
+  select.form-control {
+    border: 1px solid #00000024;
+    color: rgba(0, 0, 0, 0.653);
+  }
+
+  .btn-sub {
+    background-color: #e0bf08 !important;
+    border-color: #e0bf08;
+    color: white !important;
+    margin-top: 18px;
+    padding: 10px 27px;
+  }
+
+  .btn-secondary {
+    background-color: #abababd6;
+  }
+
+  .search {
+    margin-top: 10px;
+  }
+
+  .dimension {
+    width: 15%;
+  }
+
+  .factors {
+    width: 25%;
+  }
+
+  .attributes {
+    width: 40%;
+  }
+
+  .values {
+    width: 20%;
+  }
+
+}
+.btn-submit{
+  font-size: 12px!important;
+}
+:host ::ng-deep {
+  border-radius: 0px !important;
+  
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 6px !important;
+  }
+
+  .mat-paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+  }
+
+  .mat-header-cell {
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 700;
+    color: #000000cf;
+    width: 25%;
+    border-right: 1px solid #e0e0e0;
+    padding-left: 10px;
+  }
+
+  tr.mat-header-row {
+    height: 45px;
+  }
+
+  .mat-cell {
+    font-size: 14px;
+    font-family: 'Lato';
+    border-right: 1px solid #e0e0e0;
+    padding-left: 10px;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 6px !important;
+    margin-top: -7px;
+    margin-bottom: 0px;
+  }
+
+  .mat-form-field {
+    display: inline-block;
+    // position: relative;
+    text-align: left;
+    float: right;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 .75em 0 .75em;
+    margin-top: -0.25em;
+    position: relative;
+    font-family: 'Lato';
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    display: flex;
+    position: absolute;
+    top: 0.9em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    border-radius: none !important;
+    font-family: 'Lato' !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: transparent !important;
+    border-radius: 0px;
+    border: 1px solid #e0e0e0;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: 'Lato' !important;
+  }
+
+}
+
+

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 p-2">
+            <div class="reportContainer" id="reportContainer" #reportContainer>
+                <div class="main-spinner-wrapper">
+                    <div class="donut"></div>
+                </div>
+            </div>
+            <div class="zoom-options">
+                <div class="board">
+                    <button class="zoom-in" (click)="zoomGraph(0.1)"><img src="assets/images/zoom-in.svg"></button>
+                    <button class="zoom-out" (click)="zoomGraph(-0.1)"><img src="assets/images/zoom-out.svg"></button>
+                </div>
+                <div class="refresh-board">
+                    <button class="zoom-reset" (click)="zoomGraph('refresh')"><img src="assets/images/zoom-reset.svg"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

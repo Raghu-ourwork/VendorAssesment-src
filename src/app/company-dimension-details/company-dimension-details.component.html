@@ -1,0 +1,136 @@
+<div class="badValueContainer" id="badValueContainer" #badValueContainer>
+  <div class="container main">
+    <div class="card bad-value-form ">
+      <div class="card-header">
+        <h6 class="heading "> Data</h6>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userForm">
+        <!-- <form #userForm="ngForm" class="form pt-4" [formGroup]="userForm" (ngSubmit)="onSubmit()"
+          autocomplete="off"> -->
+
+          <div class="row form">
+            <div class="col">
+              <div class="form-group">
+                <label for="company">Company </label>
+                <select class="form-control" id="company" formControlName="company" >
+                  <option value="">Select Company</option>
+                  <option value="BP Ltd">BP Ltd</option>
+                  <option value="Ernst & Young Global"> Ernst & Young Global</option>
+                  <option value="Launch Potato">Launch Potato</option>
+                  <option value="Mission Wealth">Mission Wealth</option>
+                  <option value="Tagboard">Tagboard</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="dimension">Dimension</label>
+                <select class="form-control" id="dimension" (change)='onSelected($event,"D")' formControlName="dimension">
+                  <option value="">Select Dimension</option>
+                  <option value="Corporation">Corporation</option>
+                  <option value="Legal">Legal</option>
+                  <option value="Financial">Financial</option>
+                  <option value="Geography">Geography</option>
+                  <option value="Operations">Operations</option>
+                  <option value="Personnal">Personnal</option>
+                  <option value="Social">Social</option>
+                  <option value="Ethical">Ethical</option>
+                  <option value="Political">Political</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="gender">Factors</label>
+                <select class="form-control" id="factors"  (change)='onSelected($event,"F")' formControlName="factors">
+                  <option value="">Select Factors</option>
+                  <option *ngFor="let x of factorsAll" value="{{ x}}">{{ x }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="attributes">Attributes</label>
+                <select class="form-control" id="attributes" (change)='onSelected($event,"A")' formControlName="attributes">
+                  <option value="">Select Attributes</option>
+                  <option *ngFor="let x of attributesAll" value="{{ x}}">{{ x }}</option>
+                  
+                </select>
+              </div>
+            </div>
+           
+
+            <!-- <div class="col-lg-6 col-md-6"></div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <mat-form-field appearance="outline" class="search">
+                <input matInput placeholder="Search" class="float-right search" #input (keyup)="applyFilter($event)">
+              </mat-form-field>
+            </div> -->
+          </div>
+
+          <div>
+            <!-- <table mat-table [dataSource]="dataSource">
+
+              <ng-container matColumnDef="dimension">
+                <th mat-header-cell *matHeaderCellDef class="dimension"> Dimension </th>
+                <td mat-cell *matCellDef="let element"> {{element.dimension}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="factors">
+                <th mat-header-cell *matHeaderCellDef class="factors"> Factors </th>
+                <td mat-cell *matCellDef="let element"> {{element.factors}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="attributes">
+                <th mat-header-cell *matHeaderCellDef class="attributes"> Attributes </th>
+                <td mat-cell *matCellDef="let element"> {{element.attributes}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="bandvalues">
+                <th mat-header-cell *matHeaderCellDef class="values"> Values </th>
+                <td mat-cell *matCellDef="let element"> <input type="text" class="form-control band-value"
+                    id="bandvalues" name="bandvalues" placeholder=" Values" required> </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table> -->
+
+
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>Factors</th>
+                  <th>Attributes</th>
+                  <th>Values</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of filterData; let i=index">
+                  <td>{{ x.dimension}}</td>
+                  <td>{{ x.factors}}</td>
+                  <td>{{ x.attributes}}</td>
+                  <td>
+                    <input type="text" class="form-control" value="{{x.bandvalues}}"  (change)="updateNextColumn(i,$event)" (keyup)="updateNextColumn(i,$event)" placeholder="Values">
+
+                  </td>
+                  <td>
+                    <button type="submit" class="btn-submit btn btn-info btn-sm" *ngIf="(x.updatedBandvalues).length>0" >UPDATE </button>                    
+                    <button type="submit" class="btn-submit btn btn-dark btn-sm disabled " disabled *ngIf="(x.updatedBandvalues).length==0 " >UPDATE </button>                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
