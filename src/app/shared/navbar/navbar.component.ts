@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import {  Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,10 @@ import { ApiService } from 'src/app/services/api.service';
   providers: [NgbDropdownConfig]
 })
 export class NavbarComponent implements OnInit {
-  public iconOnlyToggled = false;
-  public sidebarToggled = false;
+  public iconOnlyToggled = true;
+  public sidebarToggled = true;
   public userDetails={email:"",role:""}
-  constructor(config: NgbDropdownConfig, private apiService: ApiService) {
+  constructor(config: NgbDropdownConfig, private authService: MsalService) {
     config.placement = 'bottom-right';
   }
 
@@ -52,15 +53,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    
-     this.apiService.logoutUser();
+    localStorage.removeItem('access-token')
+    this.authService.logoutRedirect();
   }
-
-
-
-  // toggle right sidebar
-  // toggleRightSidebar() {
-  //   document.querySelector('#right-sidebar').classList.toggle('open');
-  // }
-
 }

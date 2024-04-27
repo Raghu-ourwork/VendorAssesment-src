@@ -20,20 +20,19 @@ export class AppComponent implements OnInit {
   isLoading: boolean;
   private readonly _destroying$ = new Subject<void>();
 
-  constructor(private router: Router,private apiService:ApiService) {
+  constructor(private router: Router, private apiService: ApiService) {
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
-    
+
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         var resetpasswordUrl = event['url'].split('/')[1];
-        
         if ((event['url'] == '/') || (event['url'] == '/logout') || (event['url'] == '/forgotpassword') || (resetpasswordUrl == 'ResetPassword')) {
           this.showSidebar = false;
           this.showNavbar = false;
           this.showFooter = false;
           document.querySelector('.main-panel').classList.add('w-100');
           document.querySelector('.main-panel').classList.add('ml-0');
-        } else if(localStorage.getItem('access-token') != null && localStorage.getItem('email')!=null){
+        } else {
           this.showSidebar = true;
           this.showNavbar = true;
           this.showFooter = true;
@@ -59,19 +58,20 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
 
     // this.login()
   }
 
 
   // Log the user in and redirect them if MSAL provides a redirect URI otherwise go to the default URI
- 
+
 
   // Log the user out
   logout() {
     this.apiService.logoutUser();
   }
+
 
   ngOnDestroy(): void {
     this._destroying$.next(undefined);

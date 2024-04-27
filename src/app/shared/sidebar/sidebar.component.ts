@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MsalService } from '@azure/msal-angular';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class SidebarComponent implements OnInit {
   public reportName = '';
   public currentsubmenu = '';
   
-  constructor(private apiService: ApiService) { }
+  constructor(private authService: MsalService) { }
 
   async ngOnInit() {
     const body = document.querySelector('body');
@@ -64,16 +65,7 @@ export class SidebarComponent implements OnInit {
  
 
   logout() {
-    
-    this.apiService.logoutUser();
- }
-
-  // getMenu(): void {
-  //   this.auth.getMenu().subscribe(
-  //     res => {
-  //       this.menus = res;
-  //     }
-  //   )
-  // }
-
+    localStorage.removeItem('access-token')
+    this.authService.logoutRedirect();
+  }
 }
