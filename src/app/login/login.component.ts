@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
             next: (result) => {
               localStorage.setItem('access-token', result.accessToken)
               localStorage.setItem('email', this.authService.instance.getActiveAccount()['username'])
-              this.router.navigate(['/reports', '9c35b38b-b414-42ac-9e24-cbab01a9b1e2', 'ReportSection']);
+              this.router.navigate(['/chatbot']);
             },
             error: (error) => {
               console.log('Error acquiring access token: ', error);

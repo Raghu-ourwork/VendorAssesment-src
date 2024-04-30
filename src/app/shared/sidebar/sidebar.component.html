@@ -20,7 +20,10 @@
         <span><img src="assets/images/Option 5.png"></span>
         <span class="menu-title"> Data</span>
       </a>
-      
+       <a class="nav-link"  [attr.aria-expanded]="(subMenuCollapsed == 3 )  ? true : false"  [attr.aria-controls]="'subMenu'+ 3" >
+        <span><img src="assets/images/survey.png"></span>
+        <span class="menu-title"> Survey</span>
+      </a>
 
       <a class="nav-link" (click)="togleSidebar(2,1)" [attr.aria-expanded]="(subMenuCollapsed == 2 )  ? true : false"  [attr.aria-controls]="'subMenu'+ 2" >
         <span><img src="assets/images/conf.png"></span>

@@ -38,18 +38,19 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
 import { IPublicClientApplication, PublicClientApplication, InteractionType, BrowserCacheLocation, LogLevel } from '@azure/msal-browser';
 import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfiguration, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 import { CodeComponent } from './code/code.component';
+import { environment } from 'src/environments/environment';
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       // 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
-      clientId: "263c85cc-4f0a-43ae-9a65-a8b5ec1ea19f",
+      clientId: environment.CLIENT_ID,
       // Full directory URL, in the form of https://login.microsoftonline.com/<tenant>
-      authority: "https://login.microsoftonline.com/8550cca8-1055-4258-ad3b-ee3cca0ef462",
+      authority: environment.AUTHORITY,
       // Must be the same redirectUri as what was provided in your app registration.
-      redirectUri: "https://gray-cliff-09c86f80f.5.azurestaticapps.net/#/",
-      // redirectUri: "http://localhost:60467",
+      //redirectUri: "https://gray-cliff-09c86f80f.5.azurestaticapps.net/",
+       redirectUri: environment.REDIRECTURI,
       navigateToLoginRequestUrl:false
     },
     cache: {
@@ -61,7 +62,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 // MSAL Interceptor is required to request access tokens in order to access the protected resource (Graph)
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
+  protectedResourceMap.set(environment.RESOURCE_ACCESS_TOKEN, ['user.read']);
 
   return {
     interactionType: InteractionType.Redirect,
